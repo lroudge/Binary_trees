@@ -2,27 +2,24 @@
 #define BINARY_TREES_H
 
 /**
- * struct binary_tree_node_s - Binary tree node data structure
+ * struct binary_tree_s - Binary tree node
  *
- * @data: Data stored in a node
- * @left: Pointer to the left child
- * @right: Pointer to the right child
+ * @n: Integer stored in the node
  * @parent: Pointer to the parent node
+ * @left: Pointer to the left child node
+ * @right: Pointer to the right child node
  */
-typedef struct binary_tree_node_s
+struct binary_tree_s
 {
-	void *data;
-	struct binary_tree_node_s *left;
-	struct binary_tree_node_s *right;
-	struct binary_tree_node_s *parent;
-} binary_tree_node_t;
+	int n;
+	struct binary_tree_s *parent;
+	struct binary_tree_s *left;
+	struct binary_tree_s *right;
+};
+typedef struct binary_tree_s binary_tree_t;
 
 /* binary_tree_print.c */
-static int print_t(const binary_tree_node_t *tree, int offset, int depth,
-        char **s, int (*print_data)(char *, void *));
-static size_t _height(const binary_tree_node_t *tree);
-void binary_tree_print(const binary_tree_node_t *root,
-        int (*print_data)(char *, void *));
+void binary_tree_print(const binary_tree_t *);
 
 /* tasks */
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
