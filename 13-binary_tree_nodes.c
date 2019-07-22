@@ -2,7 +2,7 @@
 
 /**
  * binary_tree_nodes - counts the nodes with at least 1 child in a binary tree
- * @tree: tree to count the leaves from
+ * @tree: tree to count the nodes from
  *
  * Return: number of nodes counted
  *         0 if tree is NULL
