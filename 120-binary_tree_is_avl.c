@@ -17,20 +17,22 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 
 int btia_helper(const binary_tree_t *tree, int min, int max)
 {
-	int height_l, height_r;
+	int path_l, path_r;
 
 	if (!tree)
 		return (1);
 	if (tree->n < min || tree->n > max)
 		return (0);
 
-	height_l = binary_tree_height(tree->right);
-	height_r = binary_tree_height(tree->left);
+	path_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	path_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
 
-	if (abs(height_l - height_r) > 1)
+	if (abs(path_l - path_r) > 1)
 		return (0);
+
 	return (btia_helper(tree->left, min, tree->n - 1) &&
 		btia_helper(tree->right, tree->n + 1, max));
+	/* This is part of the BST check logic */
 }
 
 /**
