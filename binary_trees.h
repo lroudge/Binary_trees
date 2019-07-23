@@ -85,6 +85,6 @@ void btlo_helper(const binary_tree_t *tree, void (*func)(int), size_t level);
 int btic_helper(const binary_tree_t *tree, size_t index, size_t size);
 int btib_helper(const binary_tree_t *tree, int low, int hi);
 bst_t *bst_min_val(bst_t *root);
-int btia_helper(const binary_tree_t *tree);
+int btia_helper(const binary_tree_t *tree, int low, int hi);
 
 #endif
