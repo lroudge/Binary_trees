@@ -18,3 +18,13 @@
 16-perfect
 17-sibling
 18-uncle
+100-ancestor
+101-lvl
+102-complete
+103-rotl
+104-rotr
+110-is_bst
+111-bst_insert
+112-bst_array
+113-bst_search
+114-bst_rm
