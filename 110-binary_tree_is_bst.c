@@ -17,8 +17,8 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 /**
  * btib_helper - checks if a binary tree is a valid Binary Search Tree
  * @tree: a pointer to the root node of the tree to check
- * @low: Lower bound of checked nored
- * @hi: Upper bound of checked nodes
+ * @min: Lower bound of checked nored
+ * @max: Upper bound of checked nodes
  *
  * Return: 1 if tree is a valid BST
  *         0 otherwise
