@@ -20,11 +20,11 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	while (root->parent)
 		root = root->parent;
 
-	return (binary_tree_ancestor_helper(root, first, second));
+	return (bta_helper(root, first, second));
 }
 
 /**
- * binary_tree_ancestor_helper - finds the lowest common ancestor of two nodes
+ * bta_helper - finds the lowest common ancestor of two nodes
  * @root: a pointer to the root node of the binary tree
  * @first: a pointer to the first node to find the ancestor
  * @second: a pointer to the second node to find the ancestor
@@ -32,9 +32,8 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
  * Return: pointer to the ancestor node
  *         NULL if there is no ancestor node
  */
-binary_tree_t *binary_tree_ancestor_helper(binary_tree_t *root,
-					   const binary_tree_t *first,
-					   const binary_tree_t *second)
+binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
+			  const binary_tree_t *second)
 {
 	binary_tree_t *lca_l, *lca_r;
 
@@ -44,8 +43,8 @@ binary_tree_t *binary_tree_ancestor_helper(binary_tree_t *root,
 	if (root == first || root == second)
 		return (root);
 
-	lca_l = binary_tree_ancestor_helper(root->left, first, second);
-	lca_r = binary_tree_ancestor_helper(root->right, first, second);
+	lca_l = bta_helper(root->left, first, second);
+	lca_r = bta_helper(root->right, first, second);
 
 	if (lca_l && lca_r)
 		return (root);
