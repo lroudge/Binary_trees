@@ -54,8 +54,11 @@ avl_t *avl_insert(avl_t **tree, int value)
 {
 	int balance = 0;
 	avl_t *node = bst_insert(tree, value);
+
+	printf("inserted node = %d\n", node->n);
 	
-	balance = binary_tree_balance(node);
+	balance = binary_tree_balance(*tree);
+	printf("balance = %d\n", balance);
 
 	if (balance > 1 && value < node->left->n)
 		return(binary_tree_rotate_right(node));
