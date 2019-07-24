@@ -30,6 +30,7 @@
 114-bst_rm
 120-is_avl
 121-avl_insert
+124-avl_sorted
 130-is_heap
 131-heap_insert
 132-heap_array
