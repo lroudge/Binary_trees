@@ -15,6 +15,8 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 
 	if (!first || !second)
 		return (NULL);
+	if (first == second)
+		return ((binary_tree_t *)first);
 
 	root = (binary_tree_t *)first;
 	while (root->parent)
@@ -37,7 +39,7 @@ binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
 {
 	binary_tree_t *lca_l, *lca_r;
 
-	if (root == NULL)
+	if (!root)
 		return (NULL);
 
 	if (root == first || root == second)
