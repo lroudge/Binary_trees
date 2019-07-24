@@ -32,7 +32,6 @@ bst_t *bst_remove(bst_t *root, int value)
 			free(root);
 			return (tmp);
 		}
-
 		tmp = bst_min_val(root->right);
 		root->n = tmp->n;
 		root->right = bst_remove(root->right, tmp->n);
