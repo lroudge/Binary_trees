@@ -11,45 +11,53 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 				     const binary_tree_t *second)
 {
-	binary_tree_t *root;
+	size_t depth_first, depth_second;
 
 	if (!first || !second)
 		return (NULL);
-	if (first == second)
-		return ((binary_tree_t *)first);
 
-	root = (binary_tree_t *)first;
-	while (root->parent)
-		root = root->parent;
+	depth_first = binary_tree_depth(first);
+	depth_second = binary_tree_depth(second);
 
-	return (bta_helper(root, first, second));
+	while (depth_first > depth_second)
+	{
+		first = first->parent;
+		depth_first--;
+	}
+	while (depth_second > depth_first)
+	{
+		second = second->parent;
+		depth_second--;
+	}
+	while (first->parent)
+	{
+		if (first == second)
+			return ((binary_tree_t *)first);
+		first = first->parent;
+		second = second->parent;
+	}
+	return ((binary_tree_t *)first);
 }
 
 /**
- * bta_helper - finds the lowest common ancestor of two nodes
- * @root: a pointer to the root node of the binary tree
- * @first: a pointer to the first node to find the ancestor
- * @second: a pointer to the second node to find the ancestor
+ * binary_tree_depth - measures the depth of a node in a binary tree
+ * @tree: node to calculate the depth of
  *
- * Return: pointer to the ancestor node
- *         NULL if there is no ancestor node
+ * Return: depth of the node
+ *         0 if tree is NULL
  */
-binary_tree_t *bta_helper(binary_tree_t *root, const binary_tree_t *first,
-			  const binary_tree_t *second)
+size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	binary_tree_t *lca_l, *lca_r;
+	size_t depth = 0;
 
-	if (!root)
-		return (NULL);
+	if (!tree)
+		return (0);
 
-	if (root == first || root == second)
-		return (root);
+	while (tree->parent)
+	{
+		depth++;
+		tree = tree->parent;
+	}
 
-	lca_l = bta_helper(root->left, first, second);
-	lca_r = bta_helper(root->right, first, second);
-
-	if (lca_l && lca_r)
-		return (root);
-
-	return (lca_l ? lca_l : lca_r);
+	return (depth);
 }
