@@ -2,7 +2,8 @@
 
 /**
  * array_to_avl - builds an AVL tree from an array
- * @tree: a double pointer to the root node of the AVL tree
+ * @array: array to create from
+ * @size: size of the array
  *
  * Return: a pointer to the root node of the created AVL tree
  *         NULL on failure

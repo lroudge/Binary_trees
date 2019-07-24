@@ -1,11 +1,11 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_balance - measures the balance factor of a binary tree
- * @tree: pointer to the root node of the tree to measure the balance factor
+ * binary_tree_is_avl - finds if a binary tree is an avl
+ * @tree: pointer to the root node of the tree
  *
- * Return: the balance factor
- *         0 if tree is NULL
+ * Return: 1 if tree is avl
+ *         0 otherwise
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
@@ -15,6 +15,15 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	return (btia_helper(tree, INT_MIN, INT_MAX));
 }
 
+/**
+ * btia_helper - helper that finds if a binary tree is an avl
+ * @tree: pointer to the root node of the tree
+ * @min: minimum value
+ * @max: maximum value
+ *
+ * Return: 1 if tree is avl
+ *         0 otherwise
+ */
 int btia_helper(const binary_tree_t *tree, int min, int max)
 {
 	int path_l, path_r;
