@@ -30,10 +30,10 @@ heap_t *heap_insert(heap_t **root, int value)
 	 * Traverse tree to first empty slot based on the binary
 	 * representation of the number of leaves.
 	 * Example -
-	 * If there are 11 nodes in a complete tree, there are 4 leaves on
-	 * the 4th tier of the tree. The first empty slot is the 5th node
-	 * from the left. 5 is 110 in binary. 1 corresponds to left, 0 to right.
-	 * The first empty node is 110 == LLR, *root->left->left->right
+	 * If there are 12 nodes in a complete tree, there are 5 leaves on
+	 * the 4th tier of the tree. 5 is 101 in binary. 1 corresponds to
+	 * right, 0 to left.
+	 * The first empty node is 101 == RLR, *root->right->left->right
 	 */
 
 	new = binary_tree_node(tree, value);
